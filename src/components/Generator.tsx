@@ -231,7 +231,7 @@ export default () => {
             ref={inputRef!}
             disabled={systemRoleEditing()}
             onKeyDown={handleKeydown}
-            placeholder="准备好了吗，朋友..."
+            placeholder="准备好了吗，孩子..."
             autocomplete="off"
             autofocus
             onInput={() => {
@@ -242,7 +242,7 @@ export default () => {
             class="gen-textarea"
           />
           <button onClick={handleButtonClick}  gen-slate-btn>
-            怼
+            妈
           </button>
           <button title="Clear" onClick={clear}  gen-slate-btn>
             <IconClear />
