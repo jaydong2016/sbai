@@ -221,7 +221,7 @@ export default () => {
         when={!loading()}
         fallback={() => (
           <div class="gen-cb-wrapper">
-            <span>酝酿中...</span>
+            <span>孩子别急...</span>
             <div class="gen-cb-stop" onClick={stopStreamFetch}>停</div>
           </div>
         )}

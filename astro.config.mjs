@@ -25,8 +25,8 @@ export default defineConfig({
       registerType: 'autoUpdate',
       injectRegister: 'inline',
       manifest: {
-        name: 'ChatGPT 国粹版',
-        short_name: '国粹Chat',
+        name: 'ChatGPT 亲妈版',
+        short_name: '亲妈Chat',
         description: '',
         theme_color: '#212129',
         background_color: '#ffffff',
