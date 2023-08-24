@@ -231,7 +231,7 @@ export default () => {
             ref={inputRef!}
             disabled={systemRoleEditing()}
             onKeyDown={handleKeydown}
-            placeholder="准备好了吗，孩子..."
+            placeholder="孩子啊你快说话"
             autocomplete="off"
             autofocus
             onInput={() => {
