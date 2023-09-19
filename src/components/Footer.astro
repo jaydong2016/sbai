@@ -19,24 +19,20 @@
     </a>
   </p>
   <p>
-    <a b-slate-link href="https://r2.adone.eu.org/2023/3f335d1723fad822a962ed0fc0d998f4.png" target="_blank" style="opacity: 0.5;">
-      <span onclick="showImage('https://r2.adone.eu.org/2023/3f335d1723fad822a962ed0fc0d998f4.png')">-网站随时可能被墙屏蔽，请务必点此加群</span>
+    <a href="javascript:void(0);" onclick="showImage()">
+      -点击查看图片
     </a>
+    <img id="hiddenImage" src="https://r2.adone.eu.org/2023/3f335d1723fad822a962ed0fc0d998f4.png" style="display: none;">
   </p>
-  <div id="imageContainer" style="display: none;">
-    <img id="expandedImage" src="" alt="展示图片">
-  </div>
 </footer>
 
 <script>
-  function showImage(imageUrl) {
-    var imageContainer = document.getElementById('imageContainer');
-    var expandedImage = document.getElementById('expandedImage');
-    
-    // 设置展示的图片链接
-    expandedImage.src = imageUrl;
-    
-    // 显示图片容器
-    imageContainer.style.display = 'block';
+  function showImage() {
+    var image = document.getElementById("hiddenImage");
+    if (image.style.display === "none") {
+      image.style.display = "block";
+    } else {
+      image.style.display = "none";
+    }
   }
 </script>
