@@ -1,13 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-  /* 隐藏图片 */
-  #imageContainer {
-    display: none;
-  }
-</style>
+  <style>
+    #myImage {
+      display: none;
+      width: 100%;
+      height: auto;
+    }
+  </style>
+
+  <script>
+    function showImage() {
+      var image = document.getElementById('myImage');
+      if (image.style.display === "none") {
+        image.style.display = "block";
+      } else {
+        image.style.display = "none";
+      }
+    }
+  </script>
 </head>
+
 <body>
 
 <footer>
@@ -31,25 +44,13 @@
     </a>
   </p>
   <p>
-    <!-- 添加点击事件来显示图片 -->
-    <a href="javascript:void(0);" onclick="showImage()">
-      -点击此处查看图片
+    <a b-slate-link href="#" onclick="showImage(); return false;" style="opacity: 0.5;">
+      -网站随时可能被墙屏蔽，请务必点此加群
     </a>
   </p>
 </footer>
 
-<!-- 图片容器 -->
-<div id="imageContainer">
-  <img src="https://r2.adone.eu.org/2023/3f335d1723fad822a962ed0fc0d998f4.png" alt="图片">
-</div>
-
-<!-- JavaScript函数来显示图片 -->
-<script>
-function showImage() {
-  var imageContainer = document.getElementById("imageContainer");
-  imageContainer.style.display = "block"; // 显示图片容器
-}
-</script>
+<img id="myImage" src="https://r2.adone.eu.org/2023/3f335d1723fad822a962ed0fc0d998f4.png">
 
 </body>
 </html>
