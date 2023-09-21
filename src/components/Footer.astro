@@ -1,3 +1,4 @@
+<head>
     <style>
         /* 初始状态下图片隐藏 */
         #image {
@@ -38,18 +39,29 @@
     </footer>
 
     <!-- 图片元素 -->
-    <img id="image" src="https://r2.adone.eu.org/sj/mmqrcode1695268915986.png" alt="网站二维码">
+    <img id="image" src="https://r2.adone.eu.org/sj/mmqrcode1695268915986.png" alt="图片">
 
     <script>
-        const showImageLink = document.getElementById('showImageLink');
-        const image = document.getElementById('image');
+        document.addEventListener('DOMContentLoaded', function () {
+            // 获取链接和图片元素
+            const showImageLink = document.getElementById('showImageLink');
+            const image = document.getElementById('image');
 
-        if (showImageLink && image) {
+            let imageVisible = false; // 用于跟踪图片的显示状态
+
+            // 监听链接的点击事件
             showImageLink.addEventListener('click', (event) => {
-                event.preventDefault(); // 阻止默认行为
-                image.classList.toggle('visible'); // 切换图片的可见性
+                // 阻止默认行为，以避免链接跳转
+                event.preventDefault();
+
+                // 切换图片的显示状态
+                if (!imageVisible) {
+                    image.style.display = 'block';
+                    imageVisible = true;
+                } else {
+                    image.style.display = 'none';
+                    imageVisible = false;
+                }
             });
-        } else {
-            console.error('showImageLink or image element not found.');
-        }
+        });
     </script>
