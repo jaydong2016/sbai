@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html>
+<head>
     <style>
         /* 初始状态下图片隐藏 */
         #image {
@@ -9,24 +12,24 @@
 </head>
 <body>
     <footer>
-  <p class="mt-1 text-xs op-70">推荐使用以下版本，加群有国粹不限次</p>
-  <p class="mt-1 op-80">
-    <span class="pr-1"> </span>
-    <a b-slate-link href="https://666.dongstop.link" target="_blank">
-      主页
-    </a>
-    | 
-    <a b-slate-link href="https://www.aijiaolian.chat/midjourney?puid=5670" target="_blank">       
-      AI绘画
-    </a>
-    | 
-    <a b-slate-link href="https://mai.dongstop.link/buy/3" target="_blank">
-      ChatGPT全能版
-    </a>
-    | 
-    <a b-slate-link href="https://cc.dongstop.link" target="_blank">
-      GPT免费
-    </a>
+        <p class="mt-1 text-xs op-70">推荐使用以下版本，加群有国粹不限次</p>
+        <p class="mt-1 op-80">
+            <span class="pr-1"> </span>
+            <a b-slate-link href="https://666.dongstop.link" target="_blank">
+                主页
+            </a>
+            | 
+            <a b-slate-link href="https://www.aijiaolian.chat/midjourney?puid=5670" target="_blank">       
+                AI绘画
+            </a>
+            | 
+            <a b-slate-link href="https://mai.dongstop.link/buy/3" target="_blank">
+                ChatGPT全能版
+            </a>
+            | 
+            <a b-slate-link href="https://cc.dongstop.link" target="_blank">
+                GPT免费
+            </a>
             <!-- 其他链接... -->
         </p>
         <p>
@@ -38,23 +41,20 @@
     </footer>
 
     <!-- 图片元素 -->
-    <img id="image" src="https://r2.adone.eu.org/sj/mmqrcode1695268915986.png" alt="图片">
+    <img id="image" src="https://r2.adone.eu.org/sj/mmqrcode1695268915986.png" alt="网站二维码">
 
     <script>
-        // 获取链接和图片元素
         const showImageLink = document.getElementById('showImageLink');
         const image = document.getElementById('image');
 
-        // 监听链接的点击事件
-        showImageLink.addEventListener('click', (event) => {
-            // 阻止默认行为，以避免链接跳转
-            event.preventDefault();
-
-            // 切换图片的显示状态
-            if (image.style.display === 'none') {
-                image.style.display = 'block';
-            } else {
-                image.style.display = 'none';
-            }
-        });
+        if (showImageLink && image) {
+            showImageLink.addEventListener('click', (event) => {
+                event.preventDefault(); // 阻止默认行为
+                image.classList.toggle('visible'); // 切换图片的可见性
+            });
+        } else {
+            console.error('showImageLink or image element not found.');
+        }
     </script>
+</body>
+</html>
