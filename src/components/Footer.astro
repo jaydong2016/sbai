@@ -1,66 +1,17 @@
-<head>
+<footer>
     <style>
-        /* 初始状态下图片隐藏 */
-        #image {
-            display: none;
-            width: 350px; /* 固定宽度为350像素 */
-            height: auto; /* 自动计算高度以保持比例 */
-        }
+        .my-footer { margin-top: 1em; opacity: 0.8; font-size: 0.75em; }
     </style>
-</head>
-<body>
-    <footer>
-        <p class="mt-1 text-xs op-70">推荐使用以下版本</p>
-        <p class="mt-1 op-80">
-            <span class="pr-1"> </span>
-            <a b-slate-link href="https://666.dongstop.link" target="_blank">
-                主页
-            </a>
-            | 
-            <a b-slate-link href="https://www.openflowai.net?puid=5670" target="_blank">       
-                AI绘画
-            </a>
-            | 
-            <a b-slate-link href="https://mai.dongstop.link/buy/1" target="_blank">
-                GPT￥9.9
-            </a>
-            | 
-            <a b-slate-link href="https://hai.dongstop.link" target="_blank">
-                GPT免费公益站👈
-            </a>
-        </p>
-        <p>
-            <a b-slate-link href="https://r2.adone.eu.org/2023/9b9b029345fe4e563bff16327c8b7746.jpg" target="_blank" style="opacity: 0.5;"
-               id="showImageLink">
-                >打赏
-            </a>
-        </p>
-    </footer>
-
-    <!-- 图片元素 -->
-    <img id="image" src="https://r2.adone.eu.org/2023/9b9b029345fe4e563bff16327c8b7746.jpg" alt="图片">
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // 获取链接和图片元素
-            const showImageLink = document.getElementById('showImageLink');
-            const image = document.getElementById('image');
-
-            let imageVisible = false; // 用于跟踪图片的显示状态
-
-            // 监听链接的点击事件
-            showImageLink.addEventListener('click', (event) => {
-                // 阻止默认行为，以避免链接跳转
-                event.preventDefault();
-
-                // 切换图片的显示状态
-                if (!imageVisible) {
-                    image.style.display = 'block';
-                    imageVisible = true;
-                } else {
-                    image.style.display = 'none';
-                    imageVisible = false;
-                }
-            });
-        });
-    </script>
+    <p class="my-footer">推荐使用以下版本</p>
+    <p class="my-footer">
+        <span class="pr-1"> </span>
+        <a b-slate-link href="https://666.dongstop.link" target="_blank">主页</a> | 
+        <a b-slate-link href="https://www.openflowai.net?puid=5670" target="_blank">AI绘画</a> | 
+        <a b-slate-link href="https://mai.dongstop.link/buy/1" target="_blank">GPT￥9.9</a> | 
+        <a b-slate-link href="https://ai2.dongstop.link" target="_blank">GPT免费公益站👈</a>
+    </p>
+    <details>
+        <summary class="my-footer">打赏</summary>
+        <img src="https://r2.adone.eu.org/2023/9b9b029345fe4e563bff16327c8b7746.jpg" alt="二维码">
+    </details>        
+</footer>
