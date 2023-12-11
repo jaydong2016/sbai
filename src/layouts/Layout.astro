@@ -26,79 +26,6 @@ const { title } = Astro.props;
   </head>
   <body>
     <slot />
-      <div id="root"></div>
-      <div id="loading">正在加载中...</div>
-      <div id="modal-root">
-        <div id="welcomeModal" class="modal">
-          <div class="modal-content">
-            <span class="close-button" onclick="closeModal('welcomeModal')">&times;</span>
-            <p>Welcome Back HaiGPT</p>
-            <p>首次加载可能稍慢…</p>
-            <p>不建议在微信直接打开</p>
-            <a href="https://hai.dongstop.link" target="_blank">请复制链接到浏览器访问</a>
-          </div>
-        </div>
-
-        <div id="reminderModal" class="modal">
-          <div class="modal-content">
-            <span class="close-button" onclick="closeModal('reminderModal')">&times;</span>
-            <p>切勿发送擦边违规内容！</p>
-            <p>公益站维护不易|勿滥用</p>
-            <a href="https://mai.dongstop.link/buy/3" target="_blank" style="color:blue;">捐赠_省心版 ¥ 9.99 👈</a>
-          </div>
-        </div>
-      </div>
-
-    <script>
-      let reminderInterval;
-
-      function showModal(modalId) {
-        const modal = document.getElementById(modalId);
-        modal.style.display = "block";
-      }
-
-      function closeModal(modalId) {
-        const modal = document.getElementById(modalId);
-        modal.style.display = "none";
-        
-        // 当关闭reminderModal时，重置定时器
-        if (modalId === 'reminderModal') {
-          resetReminderTimer();
-        }
-      }
-
-      function resetReminderTimer() {
-        // 清除现有的定时器
-        clearInterval(reminderInterval);
-      
-        // 重新启动定时器
-        reminderInterval = setInterval(function() {
-          showModal('reminderModal');
-        }, 600000); // 600000 毫秒后再次显示reminderModal
-      }
-
-      function isToday(dateString) {
-        const today = new Date();
-        const date = new Date(dateString);
-        return date.getDate() === today.getDate() &&
-               date.getMonth() === today.getMonth() &&
-               date.getFullYear() === today.getFullYear();
-      }
-
-      window.onload = function() {
-        document.getElementById('loading').style.display = 'none';
-        const lastDisplayDate = localStorage.getItem('lastWelcomeModalDisplayDate');
-
-        if (!lastDisplayDate || !isToday(lastDisplayDate)) {
-          showModal('welcomeModal');
-          localStorage.setItem('lastWelcomeModalDisplayDate', new Date().toISOString());
-        }
-
-        // 初始化提醒模态框的定时器
-        resetReminderTimer();
-      };
-    </script>
-
   </body>
 </html>
 
@@ -144,50 +71,6 @@ const { title } = Astro.props;
   ::-webkit-scrollbar-track {
     background-color: var(--c-bg);
   }
-    .modal {
-      display: none; /* Changed to none to be hidden by default */
-      position: fixed; 
-      z-index: 100; 
-      padding-top: 300px; 
-      left: 0;
-      top: 0;
-      width: 100%; 
-      height: 100%; 
-      overflow: auto; 
-      background-color: rgba(0,0,0,0.4);
-    }
-    .modal-content {
-      background-color: #fefefe;
-      margin: auto;
-      padding: 20px;
-      border: 1px solid #888;
-      max-width: 350px;
-      width: 80%; /* Removed duplicate width property */
-      border-radius: 10px;
-      font-size: 18px;
-      letter-spacing: 1px;
-    }
-    .close-button {
-      color: red;
-      float: right;
-      font-size: 60px;
-    }
-    .close-button:hover,
-    .close-button:focus {
-      color: #000;
-      text-decoration: none;
-      cursor: pointer;
-      letter-spacing: 1px;
-    }
-    /* Added for loading div */
-    #loading {
-      position: fixed;
-      top: 50%; 
-      left: 50%; 
-      transform: translate(-50%, -50%);
-      font-size: 20px; /* adjust as needed */
-      color: #48c9b0;
-    }
 </style>
 
 <script>
