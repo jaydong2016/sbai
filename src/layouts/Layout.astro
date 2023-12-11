@@ -108,7 +108,7 @@ const { title } = Astro.props;
     .close-button {
       color: red;
       float: right;
-      font-size: 60px;
+      font-size: 30px;
     }
     .close-button:hover,
     .close-button:focus {
@@ -153,7 +153,7 @@ const { title } = Astro.props;
     // 重新启动定时器
     reminderInterval = setInterval(function() {
       showModal('reminderModal');
-    }, 300000); // 600000 毫秒后再次显示reminderModal
+    }, 200000); // 200000 毫秒后再次显示reminderModal
   }
 
   window.onload = function() {
