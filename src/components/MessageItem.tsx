@@ -1,4 +1,4 @@
-import { createSignal, onCleanup } from 'solid-js'
+import { createSignal } from 'solid-js'
 import MarkdownIt from 'markdown-it'
 import mdKatex from 'markdown-it-katex'
 import mdHighlight from 'markdown-it-highlightjs'
@@ -68,41 +68,17 @@ export default ({ role, message, showRetry, onRetry }: Props) => {
     return ''
   }
 
-  // 创建一个信号来追踪按钮是否被禁用
-  const [isDisabled, setIsDisabled] = createSignal(false)
-
-  const handleRetry = () => {
-    if (isDisabled()) {
-      return
-    }
-
-    // 禁用按钮
-    setIsDisabled(true)
-
-    // 调用原始的 onRetry 函数
-    onRetry?.()
-
-    // 10秒后启用按钮
-    const timeoutId = setTimeout(() => {
-      setIsDisabled(false)
-    }, 10000)
-
-    // 在组件卸载时清除定时器
-    onCleanup(() => {
-      clearTimeout(timeoutId)
-    })
-  }
-
   return (
     <div class="py-2 -mx-4 px-4 transition-colors md:hover:bg-slate/3">
       <div class="flex gap-3 rounded-lg" class:op-75={role === 'user'}>
         <div class={`shrink-0 w-7 h-7 mt-4 rounded-full op-80 ${roleClass[role]}`} />
         <div class="message prose break-words overflow-hidden" innerHTML={htmlString()} />
       </div>
-      {showRetry?.() && (
+      {showRetry?.() && onRetry && (
         <div class="fie px-3 mb-2">
-          <div onClick={handleRetry} class={`gpt-retry-btn ${isDisabled() ? 'opacity-50' : ''}`}>
+          <div onClick={onRetry} class="gpt-retry-btn">
             <IconRefresh />
+            
           </div>
         </div>
       )}

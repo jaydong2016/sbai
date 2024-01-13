@@ -17,7 +17,7 @@ export default () => {
   const [loading, setLoading] = createSignal(false)
   const [controller, setController] = createSignal<AbortController>(null)
   const [isStick, setStick] = createSignal(false)
-  const [isButtonDisabled, setButtonDisabled] = createSignal(false) // 新增的状态
+  const [lastRequestTime, setLastRequestTime] = createSignal<Date>(null) // new signal for last request time
 
   createEffect(() => (isStick() && smoothToBottom()))
 
@@ -56,8 +56,12 @@ export default () => {
   }
 
   const handleButtonClick = async() => {
-    // 禁用按钮
-    setButtonDisabled(true);
+    const now = new Date()
+    if (lastRequestTime() && now.getTime() - lastRequestTime().getTime() < 20000) {
+        setCurrentError({ message: '发送频次不宜过快！20 S /条' })
+        return
+    }
+    setLastRequestTime(now)
 
     const inputValue = inputRef.value
     if (!inputValue)
@@ -73,11 +77,6 @@ export default () => {
     ])
     requestWithLatestMessage()
     instantToBottom()
-
-    // 20秒后重新启用按钮
-    setTimeout(() => {
-      setButtonDisabled(false);
-    }, 20000);
   }
 
   const smoothToBottom = useThrottleFn(() => {
@@ -189,6 +188,13 @@ export default () => {
   }
 
   const retryLastFetch = () => {
+    const now = new Date()
+    if (lastRequestTime() && now.getTime() - lastRequestTime().getTime() < 10000) {
+        setCurrentError({ message: '老哥慢一点儿！ 10 S' })
+        return
+    }
+    setLastRequestTime(now)
+
     if (messageList().length > 0) {
       const lastMessage = messageList()[messageList().length - 1]
       if (lastMessage.role === 'assistant')
@@ -250,7 +256,7 @@ export default () => {
             rows="1"
             class="gen-textarea"
           />
-          <button onClick={handleButtonClick} disabled={isButtonDisabled()} gen-slate-btn>
+          <button onClick={handleButtonClick}  gen-slate-btn>
             怼
           </button>
           <button title="Clear" onClick={clear}  gen-slate-btn>
