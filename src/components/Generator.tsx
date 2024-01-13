@@ -17,6 +17,7 @@ export default () => {
   const [loading, setLoading] = createSignal(false)
   const [controller, setController] = createSignal<AbortController>(null)
   const [isStick, setStick] = createSignal(false)
+  const [isButtonDisabled, setButtonDisabled] = createSignal(false) // 新增的状态
 
   createEffect(() => (isStick() && smoothToBottom()))
 
@@ -55,6 +56,9 @@ export default () => {
   }
 
   const handleButtonClick = async() => {
+    // 禁用按钮
+    setButtonDisabled(true);
+
     const inputValue = inputRef.value
     if (!inputValue)
       return
@@ -69,6 +73,11 @@ export default () => {
     ])
     requestWithLatestMessage()
     instantToBottom()
+
+    // 20秒后重新启用按钮
+    setTimeout(() => {
+      setButtonDisabled(false);
+    }, 20000);
   }
 
   const smoothToBottom = useThrottleFn(() => {
@@ -241,7 +250,7 @@ export default () => {
             rows="1"
             class="gen-textarea"
           />
-          <button onClick={handleButtonClick}  gen-slate-btn>
+          <button onClick={handleButtonClick} disabled={isButtonDisabled()} gen-slate-btn>
             怼
           </button>
           <button title="Clear" onClick={clear}  gen-slate-btn>
