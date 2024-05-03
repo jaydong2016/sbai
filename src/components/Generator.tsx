@@ -57,8 +57,8 @@ export default () => {
 
   const handleButtonClick = async() => {
     const now = new Date()
-    if (lastRequestTime() && now.getTime() - lastRequestTime().getTime() < 20000) {
-        setCurrentError({ message: '发送频次不宜过快！20 S /条' })
+    if (lastRequestTime() && now.getTime() - lastRequestTime().getTime() < 10000) {
+        setCurrentError({ message: '发送频次不宜过快！10 S /条' })
         return
     }
     setLastRequestTime(now)
@@ -189,8 +189,8 @@ export default () => {
 
   const retryLastFetch = () => {
     const now = new Date()
-    if (lastRequestTime() && now.getTime() - lastRequestTime().getTime() < 30000) {
-        setCurrentError({ message: '请慢一点儿！ 30 S' })
+    if (lastRequestTime() && now.getTime() - lastRequestTime().getTime() < 10000) {
+        setCurrentError({ message: '请慢一点儿！ 10 S' })
         return
     }
     setLastRequestTime(now)
@@ -246,7 +246,7 @@ export default () => {
             ref={inputRef!}
             disabled={systemRoleEditing()}
             onKeyDown={handleKeydown}
-            placeholder="请您慢怼… 20 S /条"
+            placeholder="请您慢怼… 10 S /条"
             autocomplete="off"
             autofocus
             onInput={() => {
