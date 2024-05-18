@@ -232,7 +232,7 @@ export default () => {
             disabled={systemRoleEditing()}
             onKeyDown={handleKeydown}
             placeholder="请您慢怼… 2条/10s"
-            autocomplete="off"
+            autocomplete="on"
             autofocus
             onInput={() => {
               inputRef.style.height = 'auto'
